@@ -14,7 +14,7 @@ class Mcdlocation
   # Import Data from CSV for all MCD locations
   def self.import_csv
     include CsvMapper
-    csv_data = CsvMapper.import('./tmp/mcdlist.csv') do
+    csv_data = CsvMapper.import('./public/mcdlist.csv') do
       read_attributes_from_file
     end
 
