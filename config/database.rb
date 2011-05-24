@@ -24,7 +24,7 @@ case Padrino.env
         end
       end
     end
-  when :production  then DataMapper.setup(:default, "mysql://root@localhost/mcdfinder_production")
+  when :production  then DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
   when :test        then DataMapper.setup(:default, "mysql://root@localhost/mcdfinder_test")
 end
 

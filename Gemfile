@@ -1,4 +1,4 @@
-source :rubygems
+source :gemcutter
 
 # Server requirements
 # gem 'thin' or mongrel
@@ -6,6 +6,10 @@ source :rubygems
 group :development do
   gem 'awesome_print'
   gem 'dm-mysql-adapter'
+end
+
+group :production do
+  gem 'dm-postgres-adapter'
 end
 
 # Project requirements
