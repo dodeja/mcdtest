@@ -3,20 +3,18 @@ source :rubygems
 # Server requirements
 # gem 'thin' or mongrel
 
+group :development do
+  gem 'awesome_print'
+  gem 'dm-mysql-adapter'
+end
+
 # Project requirements
 gem 'rake'
 gem 'rack-flash'
 gem 'rgarner-csv-mapper', :git => "git://github.com/Mugasha/csv-mapper.git"
-gem 'awesome_print'
-
-# Component requirements
 gem 'haml'
-gem 'dm-mysql-adapter'
 gem 'data_mapper'
 gem 'dm-geokit'
-
-# Test requirements
-
 
 # Padrino
 gem 'padrino', "0.9.29"
