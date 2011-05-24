@@ -1,0 +1,30 @@
+##
+# A MySQL connection:
+# DataMapper.setup(:default, 'mysql://user:password@localhost/the_database_name')
+#
+# # A Postgres connection:
+# DataMapper.setup(:default, 'postgres://user:password@localhost/the_database_name')
+#
+# # A Sqlite3 connection
+# DataMapper.setup(:default, "sqlite3://" + Padrino.root('db', "development.db"))
+#
+
+DataMapper.logger = logger
+DataMapper::Property::String.length(255)
+
+case Padrino.env
+  when :development
+    DataMapper.setup(:default, "mysql://root@localhost/mcdfinder_development")
+    DataMapper::Adapters::MysqlAdapter::SQL.module_eval do
+      def quote_name(name)
+        if name.include? '('
+          name
+        else
+          "`#{name[0, self.class::IDENTIFIER_MAX_LENGTH].gsub('`', '``')}`"
+        end
+      end
+    end
+  when :production  then DataMapper.setup(:default, "mysql://root@localhost/mcdfinder_production")
+  when :test        then DataMapper.setup(:default, "mysql://root@localhost/mcdfinder_test")
+end
+
