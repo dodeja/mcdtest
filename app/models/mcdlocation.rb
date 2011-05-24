@@ -32,7 +32,12 @@ class Mcdlocation
   
   def self.locate(args)
     radius = args[:radius].to_i.mi || 5.mi
-    locations = Mcdlocation.all(:loc.near => {:origin => args[:query], :distance => radius}, :conditions => ['1 = 1'], :fields => nil, :order => [:loc_distance.asc])
+    case Padrino.env
+      when :development
+        locations = Mcdlocation.all(:loc.near => {:origin => args[:query], :distance => radius}, :conditions => ['1 = 1'], :fields => nil, :order => [:loc_distance.asc])
+      when :production
+        locations = Mcdlocation.all(:loc.near => {:origin => args[:query], :distance => radius}, :order => [:loc_distance.asc])
+    end
     response = {
       :results => locations
     }
