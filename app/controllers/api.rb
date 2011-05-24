@@ -7,4 +7,9 @@ Mcdfinder.controllers :api do
     content_type :json
     results.to_json
   end
+  
+  get :hello do
+    content_type :json
+    {:result => "hello"}.to_json
+  end
 end
