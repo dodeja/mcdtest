@@ -1,0 +1,14 @@
+%table{:id => "locations", :class=> "span-18" }(summary="This is the summary text for this table."  border="0" cellspacing="0" cellpadding="0")
+	%thead
+		%th.span-2 National ID
+		%th Street
+		%th.span-3 City
+		%th.span-1 Zip
+	%tbody
+	- @locations.each do |location|
+		%tr
+			%td= link_to location.natid, url_for(:manage, :location, :id => location.id)
+			%td= location.loc_street_address
+			%td= location.loc_city
+			%td= location.loc_zip
+= @locations.pager.to_html('/manage')

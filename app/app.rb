@@ -5,7 +5,15 @@ class Mcdfinder < Padrino::Application
   enable :sessions
 
   require 'csv-mapper'
+  require 'sass'
   include CsvMapper
+
+  get '/stylesheets/:file.css' do |file|
+    content_type 'text/css', :charset => 'utf-8'
+    render :scss, file.to_sym, :layout => false, :views => './public/stylesheets'
+  end
+  
+  
   
   ##
   # Caching support

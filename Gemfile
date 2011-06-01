@@ -5,6 +5,8 @@ source :gemcutter
 
 group :development do
   gem 'awesome_print'
+  # gem 'pg'
+  # gem 'dm-postgres-adapter'
   gem 'dm-mysql-adapter'
 end
 
@@ -17,8 +19,10 @@ gem 'rake'
 gem 'rack-flash'
 gem 'rgarner-csv-mapper', :git => "git://github.com/Mugasha/csv-mapper.git"
 gem 'haml'
+gem 'sass'
 gem 'data_mapper'
 gem 'dm-geokit'
+gem 'dm-pager'
 
 # Padrino
 gem 'padrino', "0.9.29"

@@ -1,0 +1,51 @@
+#api_info
+	%h2 API Info
+	%h3 Search 
+	%p 
+		The search endpoint support two parameters <b>query</b> and  <b>radius</b>
+		Query parameter accepts a city or a zip. Radius is in miles. 
+	%h4 Endpoint
+	%h4= link_to "/api/locate?query=90017&radius=1", "/api/locate?query=90017&radius=1"
+	%h4 Response
+	%pre 
+		:preserve		
+			{ 
+			results: [ 
+				{
+					id: 209
+					natid: 25706
+					phone: "(213) 483-8702"
+					coop: "Los Angeles"
+					open247: true
+					active: null
+					loc: "1625 Wilshire Blvd, Los Angeles, CA 90017, USA"
+					loc_distance: 0.222460118363278
+					loc_lat: 34.055698394775
+					loc_lng: -118.270820617676
+					loc_street_address: "1625 Wilshire Blvd"
+					loc_city: "Los Angeles"
+					loc_state: "CA"
+					loc_zip: "90017"
+					loc_country_code: "US"
+					loc_full_address: "1625 Wilshire Blvd, Los Angeles, CA 90017, USA"
+				}, 
+				{
+					id: 79
+					natid: 4589
+					phone: "(213) 389-4986"
+					coop: "Los Angeles"
+					open247: true
+					active: null
+					loc: "2020 W Olympic Blvd, Los Angeles, CA 90006, USA"
+					loc_distance: 0.692490144354973
+					loc_lat: 34.051094055176
+					loc_lng: -118.278694152832
+					loc_street_address: "2020 W Olympic Blvd"
+					loc_city: "Los Angeles"
+					loc_state: "CA"
+					loc_zip: "90006"
+					loc_country_code: "US"
+					loc_full_address: "2020 W Olympic Blvd, Los Angeles, CA 90006, USA"
+				}
+			]
+			}

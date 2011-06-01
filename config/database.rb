@@ -14,13 +14,15 @@ DataMapper::Property::String.length(255)
 
 case Padrino.env
   when :development
+    # DataMapper.setup(:default, 'postgres://akshayd@localhost/mcdfinder_development')
     DataMapper.setup(:default, "mysql://root@localhost/mcdfinder_development")
+    # DataMapper::Adapters::PostgresAdapter::SQL.module_eval do
     DataMapper::Adapters::MysqlAdapter::SQL.module_eval do
       def quote_name(name)
         if name.include? '('
           name
         else
-          "`#{name[0, self.class::IDENTIFIER_MAX_LENGTH].gsub('`', '``')}`"
+          "`#{name[0, self.class::IDENTIFIER_MAX_LENGTH].gsub('`.`', '.')}`"
         end
       end
     end

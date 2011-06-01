@@ -42,6 +42,9 @@ GEM
     dm-mysql-adapter (1.1.0)
       dm-do-adapter (~> 1.1.0)
       do_mysql (~> 0.10.2)
+    dm-pager (1.1.0)
+      dm-aggregates (>= 0.10.1)
+      dm-core (>= 0.10.1)
     dm-postgres-adapter (1.1.0)
       dm-do-adapter (~> 1.1.0)
       do_postgres (~> 0.10.2)
@@ -115,6 +118,7 @@ GEM
     rack-flash (0.1.1)
       rack
     rake (0.9.0)
+    sass (3.1.1)
     sinatra (1.2.6)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
@@ -135,9 +139,11 @@ DEPENDENCIES
   data_mapper
   dm-geokit
   dm-mysql-adapter
+  dm-pager
   dm-postgres-adapter
   haml
   padrino (= 0.9.29)
   rack-flash
   rake
   rgarner-csv-mapper!
+  sass

@@ -38,6 +38,7 @@ class Mcdlocation
     #   when :production
     #     locations = Mcdlocation.all(:loc.near => {:origin => args[:query], :distance => radius}, :order => [:loc_distance.asc])
     # end
+
     locations = Mcdlocation.all(:loc.near => {:origin => args[:query], :distance => radius}, :conditions => ['1 = 1'], :fields => nil, :order => [:loc_distance.asc])
     response = {
       :results => locations

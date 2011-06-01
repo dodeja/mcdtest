@@ -1,0 +1,27 @@
+%h2 New Location
+- form_for @location, url_for(:manage, :new_location), :id => 'register', :method => "POST" do |f|
+	= f.error_messages
+	= flash_tag :notice, :class => 'flash', :id => 'flash-notice'
+	%p
+		= f.label :natid
+		= f.text_field :natid
+	%p
+		= label_tag :phone
+		= f.text_field :phone
+	%p
+		= f.label :coop
+		= f.text_field :coop
+	%p
+		= f.label :loc_street_address
+		= f.text_field :loc_street_address
+	%p
+		= f.label :loc_city
+		= f.text_field :loc_city
+	%p
+		= f.label :loc_zip
+		= f.text_field :loc_zip
+	%p
+		= f.label :loc_state
+		= f.text_field :loc_state
+	%p
+		= f.submit "Create Location", :class => 'submit'

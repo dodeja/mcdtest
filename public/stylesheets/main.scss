@@ -1,0 +1,109 @@
+@import "mixins.scss";
+
+/* CSS definations */
+body {
+  background: url(/tile.gif); }
+
+.flash {
+	padding: 10px;
+	background: lightgreen;
+	border: 1px solid green;
+	font-size: 1.4em;
+	color: #222;
+}
+
+pre {
+	padding: 10px;
+	background: rgba(0,0,0,.1);
+	border: 1px solid #999;
+}
+
+.menu {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+  li {
+    display: inline;
+    font-size: 13px;
+    a {
+	  @include rounded(3px); 
+      @include box_shadow(0, 1px, 1px, #aaa); 
+      padding: 5px 10px;
+      text-decoration: none;
+      font-weight: bold;
+      background: white;
+      color: #222;
+	}
+    &.selected a {
+      background: black;
+      color: white; }
+    a:hover {
+      background: #333;
+      color: white; } } }
+
+#locations { 
+	td { 
+		border-bottom: 1px solid #bbb;
+	}
+}
+
+
+form {
+	p {
+		margin: 5px 0;
+	}
+	label { 
+		display: block;
+		font-size: 15px;
+		padding-bottom: 5px;
+	}
+	input {
+		font-size: 15px;
+		padding: 5px;
+		border: 1px solid #bbb;
+		color: #555;
+	}
+}
+
+
+.pager { 
+	@include rounded(5px); 
+	@include linear_gradient(#fff 0, #efefef 100%, transparent);
+	margin: 5px 0; 
+	border: 1px solid #ccc; 
+	line-height: 2em; 
+	font-size: 1.1em; 
+	float: left;
+	padding: 0;
+	li {
+		float: left;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	a {
+		@include rounded(0);
+		padding: 0 10px; 
+		background: none; 
+		color: #444;  
+		display: inline-block; 
+		border-radius: 0px; 
+		border-left: 1px solid #ccc;
+		text-decoration: none;
+		.next_page:hover, .prev_page:hover {  background: none;}
+		
+	}
+	a:hover, .active {
+		@include box_shadow(0, 0, 5px, #aaa);
+		background: none; 
+		a { color: #000; font-weight: bold;}
+	}
+	.more { 
+		@include rounded(0); 
+		color: #000;
+		padding: 0 10px;
+		border-left: 1px solid #ccc;
+	}
+	.next_page { padding: 0 10px;}
+	.prev_page { float: left; padding: 0 10px; border: 0;}
+}
