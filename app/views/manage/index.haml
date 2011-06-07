@@ -4,6 +4,7 @@
 		%th Street
 		%th.span-3 City
 		%th.span-1 Zip
+		%th Actions
 	%tbody
 	- @locations.each do |location|
 		%tr
@@ -11,4 +12,5 @@
 			%td= location.loc_street_address
 			%td= location.loc_city
 			%td= location.loc_zip
+			%td= link_to 'Delete', url_for(:manage, :delete_location, :id => location.id)
 = @locations.pager.to_html('/manage')

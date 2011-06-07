@@ -40,6 +40,15 @@ Mcdfinder.controllers :manage do
     end
     render "manage/location"
   end
-     
+  
+  get :delete_location, :with => :id do
+    @location = Mcdlocation.get(params[:id])
+    if @location.destroy
+      flash[:notice] = "Location deleted!"
+    else
+      flash[:error] = "Error deleting location."
+    end
+    redirect url_for(:manage, :index)
+  end
   
 end
