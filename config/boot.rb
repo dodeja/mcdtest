@@ -25,6 +25,14 @@ end
 #
 Padrino.after_load do
   DataMapper.finalize
+  
+  # Weird JSON bug - this is the fix:
+  class Fixnum
+    def to_json(options = nil)
+      to_s
+    end
+  end
+  
 end
 
 Padrino.load!
