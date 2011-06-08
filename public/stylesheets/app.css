@@ -1,0 +1,153 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	padding:0px;
+	margin:0px;
+	background-color:#200001;
+	background-image:url(../images/background.jpg);
+	background-position:top;
+	background-repeat:no-repeat;
+	font-family:Helvetica, Arial, "Trebuchet MS", sans-serif;
+	font-size:12px;
+	color:#3c3c3c;
+	min-width:1025px;
+}
+
+input {
+	border:1px solid #c7c7c7;
+	padding:3px;
+	margin-top:5px;
+	background-color:#f4f4f4;
+	color:#aaa;
+	font-size:11px;
+	min-width:400px;
+}
+
+img {
+	border:0px;	
+}
+
+#maincontainer {
+	min-width:1025px;
+	width:100%;
+	background-image:url(../images/background.jpg);
+	background-position:top;
+	background-repeat:no-repeat;
+}
+
+#container {
+	width:1025px;
+	margin:auto;
+	
+}
+
+#header {
+	padding-top:15px;
+}
+#content {
+	clear:both;	
+	padding-top:5px;
+}
+
+#content-listing {
+	width:886px;
+	background-color:#FFF;
+	min-height:173px;
+	margin-bottom:5px;
+	padding-top:8px;
+	padding-bottom:10px;
+}
+
+#content-listing-table {
+	width:854px;
+	margin-top:8px;
+}
+
+#footer {
+	clear:both;
+	text-align:right;
+	font-size:10px;
+	color:#FFF;
+	padding-bottom:20px;
+}
+
+.tagline {
+	float:left;	
+	margin-left:138px;
+	height:79px;
+}
+
+.icons {
+	float:right;
+	padding-top:58px;
+}
+
+.left {
+	width:135px;
+	float:left;
+}
+
+.right {
+	width: 886px;
+	float:right;
+}
+
+.toparea {
+	background-color:#f4f4f4;
+	min-height:90px;
+	padding:0px 8px 3px 8px;
+	width:854px;
+	margin:auto;
+}
+
+.listing-header {
+	color:	#d41e00;
+	font-size:10px;
+	padding:5px;
+}
+
+.listing-num {
+	padding:13px 5px 10px 0px;
+}
+.listing-number {
+	background-image:url(../images/dot-grey.png);	
+	width:14px;
+	height:14px;
+	color:#FFF;
+	font-size:10px;
+	background-repeat:no-repeat;
+	text-align:center;
+	border-bottom:1px solid #f4f4f4;
+}
+
+.listing-info {
+	text-align:left;	
+	padding:10px 5px 10px 5px;
+	border-bottom:1px solid #f4f4f4;
+}
+
+.listing-dot {
+	text-align:center;	
+	padding:10px 5px 10px 5px;
+	border-bottom:1px solid #f4f4f4;
+	border-right:1px solid #f4f4f4;
+}
+
+.listing-dot-last {
+	text-align:center;	
+	padding:10px 5px 10px 5px;
+	border-bottom:1px solid #f4f4f4;
+}
+
+.listing-address {
+	font-size:14px;
+	padding:11px 5px 10px 5px;
+	border-bottom:1px solid #f4f4f4;
+}
+
+.address-firstline {
+	color:	#3b3b3b;
+	font-weight:bold;
+	font-size:14px;
+}

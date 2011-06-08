@@ -13,7 +13,11 @@ class Mcdfinder < Padrino::Application
     render :scss, file.to_sym, :layout => false, :views => './public/stylesheets'
   end
   
+  layout "app"
   
+  get :index do
+    render "app/index"
+  end
   
   ##
   # Caching support
