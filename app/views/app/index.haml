@@ -15,7 +15,7 @@
       #content-map{:style => "width: 886px; height: 432px;"}
       #content-listing
         .toparea
-          %img{:src => "images/logo.jpg"}
+          %img{:src => "images/logo.jpg", :id => "small-logo"}
           %br
           %br
           Enter zip code or city &amp; state
@@ -24,11 +24,6 @@
             %form
               %input{:id => "query", :type => "text", :value => "Search Location"}
         %table{:id => "content-listing-table", :border => "0", :cellpadding => "0", :cellspacing => "0", :align => "center"}
-          %tr{:valign => "top"}
-            %td{:class => "listing-header"}
-            %td{:class => "listing-header"} Address
-            %td{:class => "listing-header"} Contact
-            
   #footer &copy; 2011 McDonald's
 
 %script{:src => "http://maps.google.com/maps/api/js?sensor=false"}

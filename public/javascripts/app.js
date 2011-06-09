@@ -1,54 +1,60 @@
-function Map (zipcode) {
-  this.zipcode = zipcode;
+function Map (query) {
+  this.query = query;
   this.map = null;
 
   this.render = function () {
-    /* Clear the table */
-    $("#content-listing-table tr.listing").remove();
-    
     /* Geocode our internally stored zipcode so we can center our map when we reset it */
-    $.get("/api/geocode", { query: zipcode }, function(data) {
-      var mapOptions = {
-        zoom: 11,
-        center: new google.maps.LatLng(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      /* Reset the map with no markers, centered at the internally stored zipcode */
-      map = new google.maps.Map(document.getElementById("content-map"), mapOptions);
+    $.get("/api/geocode", { query: encodeURI(this.query) }, function(data) {
+      if(data.results.length > 0) {  
+        var mapOptions = {
+          zoom: 11,
+          center: new google.maps.LatLng(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        /* Reset the map with no markers, centered at the internally stored zipcode */
+        map = new google.maps.Map(document.getElementById("content-map"), mapOptions);
       
-      /* Now, get our data */
-      $.get("/api/locate", { query: zipcode, radius: 5 }, function(data) {
-        $.each(data.results, function(index, result) {
-          /* Format the address */
-          var address = result.loc_street_address + ", ";
-          var cityStateZip = result.loc_city + ", " + result.loc_state + " " + result.loc_zip;
+        /* Now, get our data */
+        $.get("/api/locate", { query: query, radius: 5 }, function(data) {
+          if(data.results.length > 0) {
+          
+            /* Add column titles */
+            $("<tr valign='top' id='table-columns'><td class='listing-header'></td><td class='listing-header'>Address</td><td class='listing-header'>Contact</td></tr>").appendTo("#content-listing-table");
+          
+            $.each(data.results, function(index, result) {
+              /* Format the address */
+              var address = result.loc_street_address + ", ";
+              var cityStateZip = result.loc_city + ", " + result.loc_state + " " + result.loc_zip;
 
-          /* Add the listing to the table */
-          $("#content-listing-table tr:last").after('<tr class="listing" valign="top"><td class="listing-num"><div class="listing-number">' + (index+1) + '</div></td><td class="listing-address"><span class="address-firstline">' + address.toUpperCase() + '</span>' + cityStateZip.toUpperCase() + '</td><td class="listing-address">' + result.phone + '</td></tr>');
+              /* Add the listing to the table */
+              $("#content-listing-table tr:last").after('<tr class="listing" valign="top"><td class="listing-num"><div class="listing-number">' + (index+1) + '</div></td><td class="listing-address"><span class="address-firstline">' + address.toUpperCase() + '</span>' + cityStateZip.toUpperCase() + '</td><td class="listing-address">' + result.phone + '</td></tr>');
 
-          /* Set up the map marker */
-          var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(result.loc_lat, result.loc_lng),
-            map: map,
-            title: "McDonald's " + result.natid
-          });
+              /* Set up the map marker */
+              var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(result.loc_lat, result.loc_lng),
+                map: map,
+                title: "McDonald's " + result.natid
+              });
 
-          /* Set up the map marker popup content */
-          var infoWindow = new google.maps.InfoWindow({
-            content: "<div><h3>McDonald's</h3><p>" + result.loc_street_address + "<br />" + cityStateZip + "<br />" + result.phone + "</p></div>"
-          });
+              /* Set up the map marker popup content */
+              var infoWindow = new google.maps.InfoWindow({
+                content: "<div><h3>McDonald's</h3><p>" + result.loc_street_address + "<br />" + cityStateZip + "<br />" + result.phone + "</p></div>"
+              });
 
-          /* Set up event handler for the map marker */
-          google.maps.event.addListener(marker, 'click', function() {
-            infoWindow.open(map, marker);
-          });
-        });
-      });
-      
+              /* Set up event handler for the map marker */
+              google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.open(map, marker);
+              });
+            });
+          } else {
+            $("#small-logo").after("<span id='message'>Sorry, we couldn't find any results for your location.</span>");
+          }
+        }); 
+      } else {
+        $("#small-logo").after("<span id='message'>Sorry, we couldn't find any results for your location.</span>");
+      } 
     });
-    
   };
-
 };
 
 $("input#query").click(function() {
@@ -57,20 +63,18 @@ $("input#query").click(function() {
 
 $("form").submit(function(e) {
   e.preventDefault();
-  var query = $("input#query").val();
-  /* Check if we have a zipcode or not */
-  if(query.search(/^\d{5}$/) == -1) {
-    /* TODO: Geolocate into a zipcode */
-    console.log("Not yet implemented.");
-  } else {
-    new Map(query).render();
-  }
+  
+  /* Clear the table */
+  $("#content-listing-table tr.listing").remove();
+  $("#content-listing-table tr.table-columns").remove();
+  $("#message").remove();
+  new Map($("input#query").val()).render();
 });
 
 $(function() {
-  var zipcode = geoip_postal_code();
-  if(zipcode == null) {
-    zipcode = 90015;
+  var query = geoip_postal_code();
+  if(query == null || query == "") {
+    query = geoip_city() + " " + geoip_region();
   }
-  new Map(zipcode).render();
+  new Map(query).render();
 });
