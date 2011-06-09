@@ -12,8 +12,7 @@
       %div{:style => "padding-top: 206px;"}
         %img{:src => "images/nightlight.png", :id => "nightlighton"}
     .right
-      #content-map
-        %img{:src => "images/map-placeholder.jpg"}
+      #content-map{:style => "width: 886px; height: 432px;"}
       #content-listing
         .toparea
           %img{:src => "images/logo.jpg"}
@@ -21,51 +20,17 @@
           %br
           Enter zip code or city &amp; state
           %br
-          %div{:style => "float: left;"}
+          %div
             %form
-              %input{:type => "text", :value => "Search Location"}
-          %div{:style => "float: right; padding-top: 7px; color:#aaa;"}
-            %a{:href => ""}
-              %img{:src => "images/arrow-left.png"}
-            2/7
-            %a{:href => ""}
-              %img{:src => "images/arrow-right.png"}
-          %div{:style => "clear: both;"}
+              %input{:id => "query", :type => "text", :value => "Search Location"}
         %table{:id => "content-listing-table", :border => "0", :cellpadding => "0", :cellspacing => "0", :align => "center"}
           %tr{:valign => "top"}
             %td{:class => "listing-header"}
             %td{:class => "listing-header"} Address
             %td{:class => "listing-header"} Contact
-          %tr{:valign => "top"}
-            %td{:class => "listing-num"}
-              .listing-number 1
-            %td{:class => "listing-address"}
-              %span{:class => "address-firstline"} 1625 WEST WILSHIRE BLVD,
-              LOS ANGELES, CA 90017
-            %td{:class => "listing-address"} (213) 483-8702
-            
-          %tr{:valign => "top"}
-            %td{:class => "listing-num"}
-              .listing-number 2
-            %td{:class => "listing-address"}
-              %span{:class => "address-firstline"} 1625 WEST WILSHIRE BLVD,
-              LOS ANGELES, CA 90017
-            %td{:class => "listing-address"} (213) 483-8702
-            
-          %tr{:valign => "top"}
-            %td{:class => "listing-num"}
-              .listing-number 3
-            %td{:class => "listing-address"}
-              %span{:class => "address-firstline"} 1625 WEST WILSHIRE BLVD,
-              LOS ANGELES, CA 90017
-            %td{:class => "listing-address"} (213) 483-8702
-            
-          %tr{:valign => "top"}
-            %td{:class => "listing-num"}
-              .listing-number 4
-            %td{:class => "listing-address"}
-              %span{:class => "address-firstline"} 1625 WEST WILSHIRE BLVD,
-              LOS ANGELES, CA 90017
-            %td{:class => "listing-address"} (213) 483-8702
             
   #footer &copy; 2011 McDonald's
+
+%script{:src => "http://maps.google.com/maps/api/js?sensor=false"}
+%script{:src => "http://j.maxmind.com/app/geoip.js"}
+%script{:src => "javascripts/app.js"}

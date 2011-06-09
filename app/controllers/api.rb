@@ -8,6 +8,11 @@ Mcdfinder.controllers :api do
     results.to_json
   end
   
+  get :geocode do
+    content_type :json
+    Net::HTTP.get("maps.googleapis.com", "/maps/api/geocode/json?address=#{params[:query]}&sensor=false")
+  end
+  
   get :hello do
     content_type :json
     {:result => "hello"}.to_json
