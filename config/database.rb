@@ -26,7 +26,19 @@ case Padrino.env
         end
       end
     end
-  when :production  then DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
-  when :test        then DataMapper.setup(:default, "mysql://root@localhost/mcdfinder_test")
+  # when :production  then DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
+  when :production
+    # DataMapper.setup(:default, 'postgres://akshayd@localhost/mcdfinder_development')
+    DataMapper.setup(:default, "mysql://root:amxdod@localhost/mcdfinder_production")
+    # DataMapper::Adapters::PostgresAdapter::SQL.module_eval do
+    DataMapper::Adapters::MysqlAdapter::SQL.module_eval do
+      def quote_name(name)
+        if name.include? '('
+          name
+        else
+          "`#{name[0, self.class::IDENTIFIER_MAX_LENGTH].gsub('`.`', '.')}`"
+        end
+      end
+    end
 end
 

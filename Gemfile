@@ -11,7 +11,7 @@ group :development do
 end
 
 group :production do
-  gem 'dm-postgres-adapter'
+  gem 'dm-mysql-adapter'
 end
 
 # Project requirements
