@@ -19,7 +19,7 @@ function Map (query) {
           if(data.results.length > 0) {
           
             /* Add column titles */
-            $("<tr valign='top' id='table-columns'><td class='listing-header'></td><td class='listing-header'>Address</td><td class='listing-header'>Contact</td></tr>").appendTo("#content-listing-table");
+            $("#table_columns").html("<td class='listing-header'></td><td class='listing-header'>Address</td><td class='listing-header'>Contact</td>");
           
             $.each(data.results, function(index, result) {
               /* Format the address */

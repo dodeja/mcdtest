@@ -24,8 +24,11 @@
             %form
               %input{:id => "query", :type => "text", :value => "Search Location"}
         %table{:id => "content-listing-table", :border => "0", :cellpadding => "0", :cellspacing => "0", :align => "center"}
+          %tbody
+            %tr{:id => "table_columns", :valign => "top"}
   #footer &copy; 2011 McDonald's
 
 %script{:src => "http://maps.google.com/maps/api/js?sensor=false"}
 %script{:src => "http://j.maxmind.com/app/geoip.js"}
 %script{:src => "javascripts/app.js"}
+
