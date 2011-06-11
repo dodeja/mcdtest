@@ -12,6 +12,7 @@ end
 
 group :production do
   gem 'dm-mysql-adapter'
+  gem 'thin'
 end
 
 # Project requirements
