@@ -1,6 +1,6 @@
 Mcdfinder.controllers :manage do
-
   layout :main
+
 
   get :index do
     @locations = Mcdlocation.page(params[:page], :per_page => 20)
@@ -52,3 +52,4 @@ Mcdfinder.controllers :manage do
   end
   
 end
+
