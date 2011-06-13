@@ -30,14 +30,15 @@ case Padrino.env
   when :production
     # DataMapper.setup(:default, 'postgres://akshayd@localhost/mcdfinder_development')
     # DataMapper.setup(:default, "mysql://root:amxdod@localhost/mcdfinder_production")
-    DataMapper.setup(:default, {
-     :adapter  => 'mysql',
-     :host     => 'localhost',
-     :username => 'root' ,
-     :password => 'amxdod',
-     :database => 'mcdfinder_production', 
-     :socket => '/tmp/mysql.sock'
-     })
+    # DataMapper.setup(:default, {
+    #  :adapter  => 'mysql',
+    #  :host     => 'localhost',
+    #  :username => 'root' ,
+    #  :password => 'amxdod',
+    #  :database => 'mcdfinder_production', 
+    #  :socket => '/tmp/mysql.sock'
+    #  })
+    DataMapper.setup(:default, "mysql://root:guMhP*vO0uFsfxVdHPI)@db.mcdfinder.dotcloud.com:7506/mcdfinder_production")
      
     # DataMapper::Adapters::PostgresAdapter::SQL.module_eval do
     DataMapper::Adapters::MysqlAdapter::SQL.module_eval do
