@@ -1,3 +1,9 @@
+.span-18
+	%form{ :action => "", :method => "get"}
+		National ID:
+		%input{:type => "text", :name => "nid"}
+		%input{:type => "submit", :value => "Find", :class => "button"}
+
 %table{:id => "locations", :class=> "span-18" }(summary="This is the summary text for this table."  border="0" cellspacing="0" cellpadding="0")
 	%thead
 		%th.span-2 National ID

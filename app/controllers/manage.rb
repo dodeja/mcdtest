@@ -3,7 +3,11 @@ Mcdfinder.controllers :manage do
 
 
   get :index do
-    @locations = Mcdlocation.page(params[:page], :per_page => 20)
+    if params[:nid]
+      @locations = Mcdlocation.all(:natid => params[:nid]).page(params[:page], :per_page => 20)
+    else
+      @locations = Mcdlocation.page(params[:page], :per_page => 20)
+    end
     render "manage/index"
   end
   
