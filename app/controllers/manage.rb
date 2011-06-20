@@ -37,6 +37,7 @@ Mcdfinder.controllers :manage do
   
   post :location, :with => :id do
     @location = Mcdlocation.get(params[:id])
+    params[:mcdlocation][:loc] = "#{params[:mcdlocation][:loc_street_address]}, #{params[:mcdlocation][:loc_city]}, #{params[:mcdlocation][:loc_state]} #{params[:mcdlocation][:loc_zip]}"
     if @location.update(params[:mcdlocation])
       flash[:notice] = "Location updated!"
     else

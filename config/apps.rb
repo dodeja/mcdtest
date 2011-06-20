@@ -32,3 +32,4 @@ end
 
 # Mounts the core application for this project
 Padrino.mount("Mcdfinder").to('/')
+Geokit::Geocoders::provider_order = [:yahoo]
