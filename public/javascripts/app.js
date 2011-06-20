@@ -1,13 +1,14 @@
 function Map (query) {
   this.query = query;
   this.map = null;
-
+  this.current_info = null;
   this.render = function () {
+	var self = this;
     /* Geocode our internally stored zipcode so we can center our map when we reset it */
     $.get("/api/geocode", { query: encodeURI(this.query) }, function(data) {
       if(data.results.length > 0) {  
         var mapOptions = {
-          zoom: 11,
+          zoom: 12,
           center: new google.maps.LatLng(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng),
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -44,6 +45,8 @@ function Map (query) {
               /* Set up event handler for the map marker */
               google.maps.event.addListener(marker, 'click', function() {
                 infoWindow.open(map, marker);
+				if(self.current_info) self.current_info.close(); 
+				self.current_info = infoWindow;
               });
             });
           } else {
