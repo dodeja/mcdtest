@@ -19,6 +19,14 @@ class Mcdfinder < Padrino::Application
     render "app/index"
   end
   
+  get '/_QR_MOBILE,' do
+    redirect '/'
+  end
+
+  get '/_QR_MOBILE' do
+    redirect '/'
+  end
+  
   ##
   # Caching support
   #
